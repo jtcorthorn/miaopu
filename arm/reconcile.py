@@ -5,7 +5,8 @@ Miaopu panel reconciler. Runs in the MAIN SYSTEM (Cowork), never in the arm.
   python3 reconcile.py inbox/panel/<RUN_ID>
 
 Reads every FINDINGS_*.md in the run, then writes RECONCILED.md and COMPARISON.md
-next to them. It does four things that were done by hand on run 2026-08-19_0829
+next to them. Works for ANY backend: it is the only component every backend shares,
+which is why seat accounting (COMPARISON.md) lives here and not in a launcher. It does four things that were done by hand on run 2026-08-19_0829
 and took longer than the run itself:
 
 1. ALIAS MERGE. Chinese name, group name, subsidiary and brand are the same entity.
@@ -250,6 +251,50 @@ def main(run_dir):
     out = os.path.join(run_dir, "RECONCILED.md")
     open(out, "w", encoding="utf-8").write("\n".join(lines))
     print(f"wrote {out}")
+
+    # ---- COMPARISON.md ---------------------------------------------------
+    # Written HERE, not by a launcher. The reconciler is the only component every
+    # backend shares, so a per-seat comparison produced by the launcher would not
+    # exist for a backend that has no launcher (claude-subagents, single-model),
+    # while every mode downstream reads this file. Seat accounting belongs to the
+    # component that sees all the seats.
+    run_id = os.path.basename(os.path.normpath(run_dir))
+    seats = sorted(set(list(models.keys()) + list(missing)))
+    C = []
+    A = C.append
+    A(f"# Panel run {run_id}")
+    A("")
+    A(f"Seats: {len(seats)}   wrote: {len(models)}   MISSING: {len(missing)}")
+    A("")
+    A("| Seat | Status | Output file | Bytes | Findings | Sourced claims | Duplicates of pipeline | Unique to this seat | Fabrications caught |")
+    A("|---|---|---|---|---|---|---|---|---|")
+    for s in seats:
+        d = os.path.join(run_dir, s)
+        f = None
+        if os.path.isdir(d):
+            cand = sorted(x for x in os.listdir(d) if x.startswith("FINDINGS_") and x.endswith(".md"))
+            if cand:
+                f = os.path.join(d, cand[0])
+        if f and os.path.exists(f):
+            body = open(f, encoding="utf-8").read()
+            n = len(models.get(s, []))
+            uniq = sum(1 for e, ms in ent.items() if list(ms) == [s]) if isinstance(ent, dict) else ""
+            A(f"| `{s}` | ok | `{s}/{os.path.basename(f)}` | {len(body.encode())} | {n} | | | {uniq} | |")
+        else:
+            why = "ran, wrote nothing" if os.path.isdir(d) else "killed or never finished"
+            A(f"| `{s}` | **MISSING** ({why}) | | 0 | 0 | | | 0 | |")
+    A("")
+    A(f"Distinct entities after alias merge: {len(ent)}")
+    A(f"Single-source entities (one distinct source domain, no matter how many seats agreed): {len(single)}")
+    A("")
+    A("Columns beyond Findings are filled by the main system during intake, never by the arm.")
+    A("A seat that produced zero findings is a data point about that seat, not an empty week.")
+    A("A row marked MISSING is a FAILED RUN, not an empty result. Check the seat directory and its transcript first.")
+    A("Model agreement is not corroboration: independence is the distinct-source-domain count above.")
+    A("")
+    comp = os.path.join(run_dir, "COMPARISON.md")
+    open(comp, "w", encoding="utf-8").write("\n".join(C))
+    print(f"wrote {comp}")
     print(f"  models with output : {len(models)}   missing: {len(missing)}")
     print(f"  raw headings       : {sum(len(fs) for fs in models.values())}")
     print(f"  entities after merge: {len(ent)}")
