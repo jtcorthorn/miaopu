@@ -28,7 +28,7 @@ and took longer than the run itself:
 
 It does not score, does not gate and does not write to the workbook. That is intake.md.
 """
-import json, os, re, sys, collections
+import json, os, re, sys, collections, datetime
 from urllib.parse import urlparse
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -260,9 +260,39 @@ def main(run_dir):
     # component that sees all the seats.
     run_id = os.path.basename(os.path.normpath(run_dir))
     seats = sorted(set(list(models.keys()) + list(missing)))
+
+    # Recover the run header from the findings themselves. The launcher used to
+    # carry tasking, roster and timestamps; a backend with no launcher does not,
+    # so read them back out of the files every backend must write.
+    hdr = {}
+    for s in sorted(models):
+        d = os.path.join(run_dir, s)
+        cand = sorted(x for x in os.listdir(d) if x.startswith("FINDINGS_") and x.endswith(".md")) if os.path.isdir(d) else []
+        if not cand:
+            continue
+        for line in open(os.path.join(d, cand[0]), encoding="utf-8").read().split("\n")[:40]:
+            m = re.match(r"^-\s*(Tasking|Layers swept|Models)\s*:\s*(.+)$", line.strip())
+            if m and m.group(1) not in hdr:
+                hdr[m.group(1)] = m.group(2).strip()
+        if len(hdr) == 3:
+            break
+    mtimes = []
+    for s in models:
+        d = os.path.join(run_dir, s)
+        for f in (os.listdir(d) if os.path.isdir(d) else []):
+            if f.startswith("FINDINGS_"):
+                mtimes.append(os.path.getmtime(os.path.join(d, f)))
+
     C = []
     A = C.append
     A(f"# Panel run {run_id}")
+    A("")
+    A(f"- Tasking: {hdr.get('Tasking', 'not declared in the findings RUN HEADER')}")
+    A(f"- Layers swept: {hdr.get('Layers swept', 'not declared')}")
+    A(f"- Roster as declared by the seats: {hdr.get('Models', 'not declared')}")
+    if mtimes:
+        A(f"- Last seat wrote: {datetime.datetime.fromtimestamp(max(mtimes)).strftime('%Y-%m-%d %H:%M')} (file mtime, local to wherever the reconciler ran)")
+    A(f"- Reconciled: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M')}")
     A("")
     A(f"Seats: {len(seats)}   wrote: {len(models)}   MISSING: {len(missing)}")
     A("")
