@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MP-Q-XX · Miaopu Quarterly One-Pager</title>
+<style>
+  :root{
+    --bg-cream:#F9F2E0; --bg-deep:#435340; --accent-lime:#B5B834; --accent-lime-2:#D4D38C;
+    --ink-deep:#2F1C13; --cream-light:#F9FEA0; --neutral-mid:#C7C0A4;
+  }
+  @page{
+    size:A4; margin:14mm 14mm 16mm 14mm; background:var(--bg-cream);
+    @bottom-left{ content:"MIAOPU \82D7\5703 \00B7 [Regional office] \00B7 Internal"; font:7pt Inter,"Helvetica Neue",Arial,sans-serif; letter-spacing:.22em; color:#2F1C13; }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--bg-cream); color:var(--ink-deep);
+        font-family:Roboto,"Open Sans","Source Sans 3",Arial,sans-serif; font-weight:300; font-size:9pt; line-height:1.3; }
+  strong{font-weight:700;}
+  .band{ background:var(--bg-deep); color:var(--cream-light); padding:7mm 22mm 6mm 22mm; margin:0 -14mm 5mm -14mm;
+         display:flex; align-items:flex-end; justify-content:space-between; }
+  .band .series{ font-family:Oswald,"Arial Narrow","DIN Condensed",sans-serif; font-weight:700; font-size:30pt; line-height:.9; color:var(--accent-lime); }
+  .band .title{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:14pt; margin-top:2mm; }
+  .band .meta{ text-align:right; font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-size:7pt; letter-spacing:.28em; text-transform:uppercase; line-height:2; }
+  .band .meta b{ color:var(--accent-lime); }
+  .kpis{ display:flex; gap:3mm; margin-bottom:4mm; }
+  .kpi{ flex:1; border:1pt solid var(--neutral-mid); padding:2.5mm 3mm; }
+  .kpi .v{ font-family:Oswald,"Arial Narrow",sans-serif; font-weight:700; font-size:17pt; color:var(--bg-deep); line-height:1; }
+  .kpi .l{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-size:6.5pt; letter-spacing:.14em; text-transform:uppercase; margin-top:1mm; }
+  .sec{ display:flex; align-items:baseline; gap:3mm; margin:4mm 0 1.8mm 0; border-bottom:.6pt solid var(--neutral-mid); padding-bottom:1mm; }
+  .sec .n{ font-family:Oswald,"Arial Narrow","DIN Condensed",sans-serif; font-weight:700; font-size:15pt; color:var(--accent-lime); line-height:1; }
+  .sec h2{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:10.5pt; letter-spacing:.04em; }
+  .bottomline{ background:var(--accent-lime-2); padding:3mm 3.5mm; font-size:9.5pt; line-height:1.4; }
+  ul{ margin:1mm 0 1mm 4.5mm; } li{ margin-bottom:1mm; }
+  table{ width:100%; border-collapse:collapse; table-layout:fixed; margin:1mm 0; }
+  th{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:6.8pt; letter-spacing:.12em; text-transform:uppercase; text-align:left; border-bottom:1pt solid var(--ink-deep); padding:1mm 1.5mm; }
+  td{ font-size:8.2pt; border-bottom:.5pt solid var(--neutral-mid); padding:1.2mm 1.5mm; vertical-align:top; }
+</style>
+</head>
+<body>
+
+<!-- MP-Q · Quarterly one-pager for headquarters, forwarded via the relay.
+     HARD CEILING: 1 page. If it does not fit, cut. Audience is the internal client and the committee:
+     global comparables mandatory, no Chinese-context jargon without one-line explanation.
+     English. 中文名 always. No em dashes. Verify by PNG (modes/report.md). -->
+
+<div class="band">
+  <div>
+    <div class="series">MP-Q-XX</div>
+    <div class="title">MIAOPU · China Scouting Quarterly · [QX 2026]</div>
+  </div>
+  <div class="meta">[Regional office] for [venture arm]<br>Via <b>[Recipient, per config.md]</b><br>[Date] · Prepared by [operator] · [city]</div>
+</div>
+
+<div class="bottomline"><strong>Bottom line.</strong> [Three lines: what the quarter changed, the single decision or input needed from headquarters, and what happens if nothing is decided.]</div>
+
+<div class="kpis">
+  <div class="kpi"><div class="v">[N]</div><div class="l">Signals processed</div></div>
+  <div class="kpi"><div class="v">[N]</div><div class="l">In pipeline / watchlist</div></div>
+  <div class="kpi"><div class="v">[N]</div><div class="l">Deep dives</div></div>
+  <div class="kpi"><div class="v">[N]</div><div class="l">Whitespace gaps open</div></div>
+</div>
+
+<div class="sec"><span class="n">01</span><h2>Top candidates</h2></div>
+<table>
+  <colgroup><col style="width:24%"><col style="width:13%"><col style="width:8%"><col style="width:30%"><col style="width:25%"></colgroup>
+  <tr><th>Company</th><th>Vertical</th><th>Score</th><th>Thesis in one line</th><th>Global comparable</th></tr>
+  <tr><td>[Name 中文名]</td><td>[..]</td><td>[..]</td><td>[..]</td><td>[..]</td></tr>
+</table>
+
+<div class="sec"><span class="n">02</span><h2>Whitespace: what only this company can fill</h2></div>
+<ul>
+  <li>[Gap, class, cheapest experiment that resolves it, estimated cost.]</li>
+</ul>
+
+<div class="sec"><span class="n">03</span><h2>Theme watch</h2></div>
+<ul>
+  <li>[Theme: level, trend since last quarter, what it does to the thesis.]</li>
+</ul>
+
+<div class="sec"><span class="n">04</span><h2>Asks of headquarters</h2></div>
+<ul>
+  <li>[Specific, answerable, with owner. Never "feedback welcome".]</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MP-D-02 · Miaopu Weekly Digest</title>
+<style>
+  /* ============ Design tokens. Replace these four to rebrand; no mode reads a colour ============ */
+  :root{
+    --bg-cream:#F9F2E0; --bg-deep:#435340; --accent-lime:#B5B834; --accent-lime-2:#D4D38C;
+    --ink-deep:#2F1C13; --cream-light:#F9FEA0; --neutral-mid:#C7C0A4;
+  }
+  @page{
+    size:A4; margin:16mm 14mm 18mm 14mm; background:var(--bg-cream);
+    @bottom-left{ content:"MIAOPU \82D7\5703 \00B7 [Regional office] \00B7 Internal"; font:7pt Inter,"Helvetica Neue",Arial,sans-serif; letter-spacing:.22em; color:#2F1C13; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font:7pt Inter,"Helvetica Neue",Arial,sans-serif; color:#2F1C13; }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--bg-cream); color:var(--ink-deep);
+        font-family:Roboto,"Open Sans","Source Sans 3",Arial,sans-serif; font-weight:300;
+        font-size:9.3pt; line-height:1.35; }
+  strong{font-weight:700;}
+
+  /* ============ Header band: the only dark-mode element (polarity rule: never mix modes mid-page) ============ */
+  .band{ background:var(--bg-deep); color:var(--cream-light); padding:9mm 22mm 7mm 22mm; margin:0 -14mm 6mm -14mm;
+         display:flex; align-items:flex-end; justify-content:space-between; }
+  .band .series{ font-family:Oswald,"Arial Narrow","DIN Condensed",sans-serif; font-weight:700;
+                 font-size:34pt; line-height:.9; color:var(--accent-lime); letter-spacing:.01em; }
+  .band .title{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:15pt; margin-top:2mm; color:var(--cream-light); }
+  .band .meta{ text-align:right; font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-size:7pt;
+               letter-spacing:.28em; text-transform:uppercase; line-height:2; color:var(--cream-light); }
+  .band .meta b{ color:var(--accent-lime); letter-spacing:.28em; }
+
+  /* ============ Section anchors: lime numeral + Inter headline ============ */
+  .sec{ display:flex; align-items:baseline; gap:4mm; margin:6mm 0 2.5mm 0; border-bottom:.6pt solid var(--neutral-mid); padding-bottom:1.2mm; }
+  .sec .n{ font-family:Oswald,"Arial Narrow","DIN Condensed",sans-serif; font-weight:700; font-size:20pt; color:var(--accent-lime); line-height:1; }
+  .sec h2{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:12pt; letter-spacing:.04em; }
+
+  .bottomline{ background:var(--accent-lime-2); padding:3.5mm 4mm; font-size:10pt; line-height:1.45; }
+
+  .card{ border-left:2.5pt solid var(--accent-lime); background:rgba(199,192,164,.18); padding:2.8mm 3.5mm; margin:0 0 2.5mm 0; page-break-inside:avoid; }
+  .card h3{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:9.8pt; margin-bottom:1mm; }
+  .tag{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-size:6.5pt; letter-spacing:.18em; text-transform:uppercase;
+        background:var(--bg-deep); color:var(--cream-light); padding:.6mm 1.8mm; margin-left:2mm; vertical-align:middle; }
+
+  ul{ margin:1mm 0 1mm 4.5mm; } li{ margin-bottom:1.2mm; }
+
+  table{ width:100%; border-collapse:collapse; table-layout:fixed; margin:1.5mm 0; page-break-inside:avoid; }
+  th{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:7pt; letter-spacing:.12em; text-transform:uppercase;
+      text-align:left; border-bottom:1pt solid var(--ink-deep); padding:1.2mm 1.5mm; }
+  td{ font-size:8.6pt; border-bottom:.5pt solid var(--neutral-mid); padding:1.4mm 1.5mm; vertical-align:top; }
+
+  .vertical-label{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:8pt; letter-spacing:.14em;
+                   text-transform:uppercase; color:var(--bg-deep); margin:2mm 0 1.5mm 0; }
+</style>
+</head>
+<body>
+
+<!-- RULES OF THIS TEMPLATE (delete comment when instantiating)
+     1. Copy this file, replace CONTENT ONLY. Never touch the chrome (tokens, band, .sec, footer).
+     2. Ceiling: 2 pages. If it does not fit, cut content; candidates beyond five go to the workbook.
+     3. Verify by PNG after rendering: overflow trims silently. See modes/report.md.
+     4. English only. Company names always with 中文名. No em dashes anywhere.
+     5. Section order is fixed: Bottom line, Alerts, New candidates, Movements, Whitespace, For the paid-intelligence provider, Coverage.
+        A section with nothing to report states that in one line; it never disappears silently. -->
+
+<div class="band">
+  <div>
+    <div class="series">MP-D-XX</div>
+    <div class="title">MIAOPU · Weekly Digest XX · [YYYY-MM-DD]</div>
+  </div>
+  <div class="meta">[Regional office] · China venture scouting<br>To: <b>[Recipient, per config.md]</b><br>Prepared by [operator] · [city]</div>
+</div>
+
+<div class="bottomline">
+  <strong>Bottom line.</strong> [Three or four sentences. What the run changed, stated as the reader's decision problem and not as a list of activities. If nothing crossed a threshold, say so in the first clause: a run with no candidates over threshold is a result, not an empty week. Name which layers were swept so the reader can weigh the silence.]
+</div>
+
+<div class="sec"><span class="n">01</span><h2>Alerts</h2></div>
+<div class="card">
+  <h3>[Entity English name 中文名 (MP-0XX)] · [what changed] <span class="tag">[why it matters, three words]</span></h3>
+  <p>[What was found, with the evidence label of each load-bearing fact. Announced capacity and operating capacity stated separately. Registered capital never called raised capital. Close with what remains unverified and what that blocks. Never adjust a score here: scoring is intake's job.]</p>
+</div>
+<p class="empty">[If there are no alerts, this section says "No alerts this run" in one line. It never disappears silently.]</p>
+
+<div class="sec"><span class="n">02</span><h2>New candidates</h2></div>
+<div class="vertical-label">[Vertical, per config.md]</div>
+<div class="card">
+  <h3>[Entity English name 中文名], [city, province]</h3>
+  <p>[Technology and precursor, no adjectives.] Capacity ANNOUNCED: [value · label]. Capacity OPERATING: [value · label]. Registered capital: [注册资本 · label]. Financing verified: [rounds with investor names · label]. Score: [pending intake, or the number]. <strong>Global comparable:</strong> [same technology, same market. Who wins, who loses, and on what.]</p>
+</div>
+
+<div class="sec"><span class="n">03</span><h2>Movements</h2></div>
+<ul>
+  <li><strong>[Entity (MP-0XX), state]:</strong> [what moved, with source and date. A movement that does not change a decision does not belong here.]</li>
+  <li><strong>Theme tracker, [metric]:</strong> [value, unit, date, source. Where it conflicts with a figure already on record, say so and propose the reconciliation rather than picking silently.]</li>
+</ul>
+
+<div class="sec"><span class="n">04</span><h2>Whitespace</h2></div>
+<p>[The gap, stated as what was expected and not found, where the search ran, and the exact formulations used including the Chinese ones. Distinguish reinforcement of a gap already on record from a new one. If nothing new, say which existing gap this run reinforced and what it still does not answer.]</p>
+
+<div class="sec"><span class="n">05</span><h2>For the paid-intelligence provider</h2></div>
+<table>
+  <colgroup><col style="width:30%"><col style="width:42%"><col style="width:28%"></colgroup>
+  <tr><th>Company</th><th>Exact question</th><th>What the answer decides</th></tr>
+  <tr><td>[Entity]</td><td>[One answerable question. A question that dies against the folder evidence, a written rule or a committed date does not get written.]</td><td>[The decision it unblocks. No decision, no question.]</td></tr>
+</table>
+
+<div class="sec"><span class="n">06</span><h2>Coverage</h2></div>
+<table>
+  <colgroup><col style="width:16%"><col style="width:14%"><col style="width:70%"></colgroup>
+  <tr><th>Layer</th><th>Status</th><th>Notes</th></tr>
+  <tr><td>Fast (weekly)</td><td>[Swept / Not due]</td><td>[Sources reached. Sources unreachable, named. A coverage gap is not a world gap and the digest must not let the reader confuse them.]</td></tr>
+  <tr><td>Medium (monthly)</td><td>[Swept / Not due]</td><td>[ ]</td></tr>
+  <tr><td>Slow (quarterly)</td><td>[Swept / Not due]</td><td>[ ]</td></tr>
+  <tr><td>[Blocked source ID]</td><td>Blocked</td><td>[What it blocks and which entities depend on it. The system's most expensive gap belongs here every week until it closes.]</td></tr>
+</table>
+
+<div class="sec"><span class="n">07</span><h2>Produced by</h2></div>
+<p>[Models and roles that produced this run, and the panel's own numbers off COMPARISON.md: seats that wrote, seats that failed, distinct source domains. Model agreement is not corroboration and this section is where that stays visible.]</p>
+
+</body>
+</html>

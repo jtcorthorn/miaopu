@@ -1,0 +1,62 @@
+# ============================================================
+# INSTANCE DATA. Never commit to the method repo.
+# Git cannot re-include a file inside an excluded directory, so
+# every rule below excludes CONTENTS and re-includes the seeds.
+# ============================================================
+
+# Your identity: operator, internal client, thresholds, out-of-scope list
+config.md
+.env
+
+# Your live workbook. The TEMPLATE ships; what you copy it to does not.
+01_Database/*
+!01_Database/.gitkeep
+!01_Database/Miaopu_Living_Database_TEMPLATE.xlsx
+
+# Your deliverables
+02_Digests/*
+!02_Digests/.gitkeep
+03_Memos/*
+!03_Memos/.gitkeep
+
+# Your requests. The blank brief ships.
+04_Requests/*
+!04_Requests/_templates/
+04_Requests/_templates/*
+!04_Requests/_templates/REQUEST_BRIEF_template.md
+
+# Your run history and the exports regenerated from your workbook
+arm/inbox/*
+!arm/inbox/panel/
+arm/inbox/panel/*
+!arm/inbox/panel/.gitkeep
+arm/exports/*
+!arm/exports/*.template.md
+arm/taskings/*
+!arm/taskings/TASKING_template.md
+
+# Your history log. The blank ships.
+_meta/*
+!_meta/.gitkeep
+!_meta/BITACORA.template.md
+
+# Credentials of any kind
+.ssh_deploy/
+*.pem
+*.key
+id_ed25519*
+id_rsa*
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Render and browser-automation scratch
+.playwright-mcp/
+*_source/_preview_check/
+
+# OS noise
+.DS_Store
+Thumbs.db

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>MP-M-XX · Miaopu Assessment Memo</title>
+<style>
+  :root{
+    --bg-cream:#F9F2E0; --bg-deep:#435340; --accent-lime:#B5B834; --accent-lime-2:#D4D38C;
+    --ink-deep:#2F1C13; --cream-light:#F9FEA0; --neutral-mid:#C7C0A4;
+  }
+  @page{
+    size:A4; margin:16mm 14mm 18mm 14mm; background:var(--bg-cream);
+    @bottom-left{ content:"MIAOPU \82D7\5703 \00B7 [Regional office] \00B7 Internal \00B7 Not an FTO analysis"; font:7pt Inter,"Helvetica Neue",Arial,sans-serif; letter-spacing:.18em; color:#2F1C13; }
+    @bottom-right{ content:"Page " counter(page) " of " counter(pages); font:7pt Inter,"Helvetica Neue",Arial,sans-serif; color:#2F1C13; }
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{ background:var(--bg-cream); color:var(--ink-deep);
+        font-family:Roboto,"Open Sans","Source Sans 3",Arial,sans-serif; font-weight:300; font-size:9.3pt; line-height:1.35; }
+  strong{font-weight:700;}
+  .band{ background:var(--bg-deep); color:var(--cream-light); padding:9mm 22mm 7mm 22mm; margin:0 -14mm 6mm -14mm;
+         display:flex; align-items:flex-end; justify-content:space-between; }
+  .band .series{ font-family:Oswald,"Arial Narrow","DIN Condensed",sans-serif; font-weight:700; font-size:34pt; line-height:.9; color:var(--accent-lime); }
+  .band .title{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:15pt; margin-top:2mm; }
+  .band .meta{ text-align:right; font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-size:7pt; letter-spacing:.28em; text-transform:uppercase; line-height:2; }
+  .band .meta b{ color:var(--accent-lime); }
+  .sec{ display:flex; align-items:baseline; gap:4mm; margin:5.5mm 0 2mm 0; border-bottom:.6pt solid var(--neutral-mid); padding-bottom:1.2mm; }
+  .sec .n{ font-family:Oswald,"Arial Narrow","DIN Condensed",sans-serif; font-weight:700; font-size:18pt; color:var(--accent-lime); line-height:1; }
+  .sec h2{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:11.5pt; letter-spacing:.04em; }
+  .bottomline{ background:var(--accent-lime-2); padding:3.5mm 4mm; font-size:10pt; line-height:1.45; }
+  .verdict{ font-family:Oswald,"Arial Narrow",sans-serif; font-weight:700; font-size:13pt; color:var(--bg-deep); text-transform:uppercase; letter-spacing:.06em; }
+  ul{ margin:1mm 0 1mm 4.5mm; } li{ margin-bottom:1.2mm; }
+  table{ width:100%; border-collapse:collapse; table-layout:fixed; margin:1.5mm 0; page-break-inside:avoid; }
+  th{ font-family:Inter,"Helvetica Neue",Arial,sans-serif; font-weight:700; font-size:7pt; letter-spacing:.12em; text-transform:uppercase; text-align:left; border-bottom:1pt solid var(--ink-deep); padding:1.2mm 1.5mm; }
+  td{ font-size:8.6pt; border-bottom:.5pt solid var(--neutral-mid); padding:1.4mm 1.5mm; vertical-align:top; }
+  .flag{ background:rgba(181,184,52,.25); padding:2.5mm 3.5mm; border-left:2.5pt solid var(--accent-lime); margin:2mm 0; page-break-inside:avoid; }
+</style>
+</head>
+<body>
+
+<!-- MP-M · Assessment memo. The 11 blocks mirror modes/assess.md and are all MANDATORY, in this order.
+     Ceiling: 3 pages. English. 中文名 always. No em dashes. Verify by PNG after rendering (modes/report.md). -->
+
+<div class="band">
+  <div>
+    <div class="series">MP-M-XX</div>
+    <div class="title">MIAOPU · Assessment Memo · [Company] [中文名]</div>
+  </div>
+  <div class="meta">[Regional office] · China venture scouting<br>Pipeline: <b>[MP-0XX · score XX/100]</b><br>[Date] · Prepared by [operator] · [city]</div>
+</div>
+
+<div class="bottomline">
+  <span class="verdict">[PURSUE / PARK / KILL]</span> · <strong>[Proposed vehicle].</strong> [Three lines maximum: the decision, the single strongest reason, the immediate next step.]
+</div>
+
+<div class="sec"><span class="n">01</span><h2>What it does, technically</h2></div>
+<p>[Mechanism without adjectives or brochure language. If the mechanism cannot be explained, that is itself the finding.]</p>
+
+<div class="sec"><span class="n">02</span><h2>Fit with the company, quantified</h2></div>
+<p>[Species accepted, share of by-product in recipe, yield per species, residues accepted. Potential volume against what the company produces. Without numbers here the memo is not ready.]</p>
+
+<div class="sec"><span class="n">03</span><h2>Unit economics vs the incumbent</h2></div>
+<p>[Declared cost, verified cost if obtainable, market price of the substituted product AND its trend. Green parity, not green premium: parity today in a market falling 20 percent a year is not parity.]</p>
+
+<div class="sec"><span class="n">04</span><h2>Global comparable, and the corpse</h2></div>
+<p>[The analogue outside China: stage, funding, backers, why the Chinese player wins or loses. Priority to pulp and paper industry analogues. If someone tried this route and abandoned it, name them and when.]</p>
+
+<div class="sec"><span class="n">05</span><h2>Intellectual property</h2></div>
+<p>[Patent family, jurisdictions, holder as currently registered and verified. This block is not a freedom-to-operate analysis and says so.]</p>
+
+<div class="sec"><span class="n">06</span><h2>Exportability risk</h2></div>
+<table>
+  <colgroup><col style="width:38%"><col style="width:12%"><col style="width:50%"></colgroup>
+  <tr><th>Sub-axis</th><th>Light</th><th>Evidence</th></tr>
+  <tr><td>IP ownership and jurisdiction</td><td>[G/A/R]</td><td>[..]</td></tr>
+  <tr><td>Local subsidy dependence</td><td>[G/A/R]</td><td>[..]</td></tr>
+  <tr><td>Supply chain portability</td><td>[G/A/R]</td><td>[..]</td></tr>
+  <tr><td>Export control / dual-use exposure</td><td>[G/A/R]</td><td>[..]</td></tr>
+  <tr><td>Willingness to license or JV abroad</td><td>[G/A/R]</td><td>[..]</td></tr>
+  <tr><td>International operating precedent</td><td>[G/A/R]</td><td>[..]</td></tr>
+</table>
+
+<div class="sec"><span class="n">07</span><h2>Why us</h2></div>
+<p>[The inverted question: what does the company have that this company needs more than the check. A purchase order, a reference plant outside China, a feedstock nobody else supplies, access to a region they lack. If the answer is "nothing, just money", the case is weak.]</p>
+
+<div class="sec"><span class="n">08</span><h2>Vehicle and next step</h2></div>
+<p>[Which of the five Ventures vehicles, the internal counterpart, and the exact next experiment or meeting.]</p>
+
+<div class="sec"><span class="n">09</span><h2>Kill criterion</h2></div>
+<div class="flag">[Defined before spending. Which single result kills this case. Without it, an assessment becomes a self-justifying process.]</div>
+
+<div class="sec"><span class="n">10</span><h2>Open questions and what could not be verified</h2></div>
+<ul>
+  <li>[Explicit. A "no findings" on a check that could not run is an unverified negative, not a pass.]</li>
+</ul>
+
+<div class="sec"><span class="n">11</span><h2>Sources</h2></div>
+<p>[Every load-bearing claim with its evidence label: registry, patent, paper, filing, company, press.]</p>
+
+</body>
+</html>

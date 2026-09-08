@@ -1,0 +1,7 @@
+# Miaopu · Python dependencies
+# Install:  pip install -r requirements.txt
+
+openpyxl>=3.1        # the workbook is the source of truth; this reads and writes it
+pandas>=2.0          # tabular reads of the pipeline
+playwright>=1.40     # PDF render of digests and memos (modes/report.md)
+                     # after installing, run once:  playwright install chromium

@@ -1,0 +1,36 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "openrouter/{{PANEL_MODEL_1}}",
+  "permission": {
+    "webfetch": "allow",
+    "websearch": "allow",
+    "read": "allow",
+    "grep": "allow",
+    "glob": "allow",
+    "edit": "allow",
+    "bash": "ask",
+    "question": "deny"
+  },
+  "agent": {
+    "sweeper": {
+      "mode": "primary",
+      "description": "Chinese-internet recall pass. Reads primary Chinese sources, extracts sourced findings.",
+      "model": "openrouter/{{PANEL_MODEL_1}}",
+      "temperature": 0.3,
+      "prompt": "You are SWEEPER. Follow AGENTS.md in this directory. Optimize for recall over precision. Search in Chinese first, at least two distinct formulations per concept. Every claim carries its source URL and date. Write only inside inbox/. Never ask whether to proceed."
+    },
+    "verifier": {
+      "mode": "primary",
+      "description": "Fact cross-check and contract compliance. Consumes sweeper raw findings.",
+      "model": "openrouter/{{VERIFIER_MODEL}}",
+      "temperature": 0.1,
+      "prompt": "You are VERIFIER. Follow AGENTS.md and OUTPUT_CONTRACT.md in this directory. Separate registered from raised capital, announced from operating capacity, and check what any cited standard actually says. Assign an evidence label to every factual field. Write only inside inbox/. Never report verification of your own writes. Never ask whether to proceed."
+    },
+    "panelist": {
+      "mode": "primary",
+      "description": "Same job as sweeper, run once per model in the comparison panel. Model comes from the CLI --model flag.",
+      "temperature": 0.3,
+      "prompt": "You are a PANELIST sweeper. Follow AGENTS.md and OUTPUT_CONTRACT.md in this directory. You are one of several models running the identical tasking in isolation, so do not speculate about what other runs found. Do the work yourself: never delegate the sweep to subagents or spawn parallel research tasks, and save partial work to your output file as you go. Write your output ONLY to the exact path given in your tasking. Never ask whether to proceed."
+    }
+  }
+}
